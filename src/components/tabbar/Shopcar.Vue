@@ -1,6 +1,6 @@
 <template>
     <div>
-        这是 GoodList 组件
+        shopCar
     </div>
 </template>
 <script>
@@ -9,6 +9,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

@@ -1,24 +1,22 @@
 import VueRouter from 'vue-router'
 
+import home from './components/tabbar/Home.vue'
 
-import Account from './components/Account.vue'
-import GoodList from './components/GoodList.vue'
+import member from './components/tabbar/Member.vue'
 
-// 引入Account的子组件
-import login from './subcomponents/login.vue'
-import register from './subcomponents/register.vue'
+import search from './components/tabbar/Search.vue'
+
+import shopcar from './components/tabbar/Shopcar.vue'
 
 let router = new VueRouter({
     routes:[
-        { path:'/Account',
-        component:Account,
-        children:[
-            {path:'login',component:login},
-            {path:'register',component:register}
-        ]    
-    } ,
-        { path:'/GoodList',component:GoodList}
-    ]
+        {path:'/',redirect:'/home'},
+        {path:'/home',component:home},
+        {path:'/member',component:member},
+        {path:'/search',component:search},
+        {path:'/shopcar',component:shopcar}
+    ],
+    linkActiveClass:'mui-active'
 })
 
 export default router

@@ -21,8 +21,10 @@ module.exports = {
             {test: /\.css$/,use:['style-loader','css-loader']},
             {test:/\.js$/,use:['babel-loader'],exclude:[/node_modules/]},
             {test:/\.vue$/,use:['vue-loader']},
-            {test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,use: 'file-loader'}
-        
+            {test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,use: 'file-loader'},
+            {test: /\.sass$/,use:['style-loader','css-loader','sass-loader']},
+            {test: /\.less$/,use:['style-loader','css-loader','less-loader']},
+            {test: /\.(png|svg|jpg|jpeg|gif)$/,use: 'url-loader'}
         ]
     },
     resolve:{
