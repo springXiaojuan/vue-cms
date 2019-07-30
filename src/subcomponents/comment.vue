@@ -2,8 +2,8 @@
     <div class="comment-container">
         <h3>评论区</h3>
         <hr>
-        <textarea placeholder="请输入评论内容"></textarea>
-        <mt-button type="primary" size="large">发表评论</mt-button>
+        <textarea placeholder="请输入评论内容" v-model="msg"></textarea>
+        <mt-button type="primary" size="large" @click="postComment">发表评论</mt-button>
         <div class="cmt-list">
             <div class="cmt-item" v-for="(item, index) in commentList" :key="index">
                 <div class="cmt-title">
@@ -23,12 +23,13 @@ export default {
     data(){
         return{
             pageindex:1,
-            commentList:[]
+            commentList:[],
+            msg:''
         }
     },
     props:["id"],
     created(){
-        this.getComments();
+        this.getComments()
     },
     methods: {
         getComments:function(){
@@ -39,6 +40,19 @@ export default {
         getMore:function(){
             this.pageindex ++
             this.getComments();
+        },
+        postComment:function(){
+            if(this.msg.trim() == ''){
+                alert("输入内容不能为空")
+                return
+            }
+            this.$http.post('api/postcomment/'+this.$route.params.id,{content:this.msg}).then(rep => {
+                this.pageindex = 1
+                this.msg = ''
+                this.commentList = []
+                this.getComments()
+                alert('发表成功')
+            })
         }
     },  
 }

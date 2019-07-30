@@ -29,7 +29,6 @@ export default {
         getnewInfo:function(){
             this.$http.get('api/getnew/'+this.id).then(rep => {
                 this.newInfo  = rep.data.message[0]
-                console.log(rep.data.message[0])
             })
         }
     }
